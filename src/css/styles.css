@@ -1,0 +1,369 @@
+[theme="light"] {
+    --main-background-color: #fff;
+    --main-text-color: #191919;
+    --main-card-color: #fefefe;
+    --main-border-color: #ccc;
+}
+
+[theme="dark"] {
+    --main-background-color: #111;
+    --main-text-color: #fefefe;
+    --main-card-color: #191919;
+    --main-border-color: transparent;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+    min-height: 100%;
+    background-color: var(--main-background-color);
+}
+
+#wrapper {
+    padding: 10px 10px 100px 10px;
+    padding-bottom: 100px;
+}
+
+.header-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.header-logo {
+    margin-bottom: 10px;
+}
+
+.header-theme-icon {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.header-tags-container {
+    display: flex;
+    justify-content: center;
+}
+
+.header-tags {
+    background-color: var(--main-card-color);
+    border: none;
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--main-text-color);
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.header-tags:hover {
+    box-shadow: 0 4px 7px 0 rgba(0,0,0,0.24), 0 8px 25px 0 rgba(0,0,0,0.19);
+  }
+
+.header-tags:focus {
+    outline: none;
+}
+
+.header-title {
+    /* display: flex; */
+    justify-content: center;
+    font-size: 30px;
+    color: var(--main-text-color);
+    flex-direction: column;
+}
+
+.header-description {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: lighter;
+    color: var(--main-text-color);
+}
+
+
+.image-gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadein 2s;
+}
+
+.image-gallery-item {
+    width: 250px;
+    height: 250px;
+    flex: auto;
+    cursor: pointer;
+    animation: fadein 1s;
+    position: relative;
+}
+
+.image-gallery-item:hover .img-item {
+    opacity: 0.3;
+}
+
+.image-gallery-item:hover .img-hover {
+    opacity: 1;
+}
+  
+
+.image-gallery-item .img-item {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.img-text {
+  color: var(--main-text-color);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.img-hover {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+
+@keyframes fadein {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.img-title {
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    color: var(--main-text-color);
+}
+
+#error {
+    text-align: center;
+    display: none;
+}
+
+#error.error-text {
+    display: block;
+    color: var(--main-text-color);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: lighter;
+    color: var(--main-text-color);
+}
+
+#loader {
+    visibility: hidden;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid var(--main-text-color);
+    border-radius: 100%;
+    margin: auto;
+    margin-top: 50px;
+    animation: spin 1s infinite linear;
+}
+
+#loader.show {
+    visibility: visible;
+}
+
+#loader.hide {
+    visibility: hidden;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 50vh;
+}
+
+.modal-show {
+    display: block;
+}
+
+.modal .modal-hide {
+    display: none;
+}
+
+#modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    font-size: 14px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.modal-content,
+#modal-caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+a {
+    color: #fefefe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+    font-weight: lighter;
+    color: var(--main-text-color);
+    background-color: var(--main-background-color);
+    padding: 2px;
+    ;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 534px) {
+    .image-gallery-item {
+        height: 100%;
+    }
+    .image-gallery-item .img-item {
+        height: 100%;
+    }
+    .header-tags {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .header-title {
+        font-size: 25px;
+    }
+    .header-tags {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .header-tags {
+        font-size: 9px;
+    }
+    .header-theme-icon {
+        top:17px
+    }
+}
