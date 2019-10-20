@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <div class="header-container">
+    <a id="top-arrow">
+        <img src="./src/assets/up-arrow.svg" alt="top-arrow">
+    </a>
+    <header class="header-container">
         <img class="header-theme-icon" src="src/assets/dark-theme-icon.svg" alt="icon" />
         <h1 class="header-title">BLACK<span style="font-weight: 100;">/WHITE</span></h1>
         <div class="header-tags-container">
@@ -19,13 +22,13 @@
             <button id="mountains" class="header-tags" value="mountains">#mountains</button>
             <button id="ocean" class="header-tags" value="ocean">#ocean</button>
         </div>
-    </div>
+    </header>
 
-    <div id="wrapper">
+    <main id="wrapper">
         <div class="image-gallery"></div>
         <div id="loader"></div>
         <div id="error">Oops. Something went wrong..</div>
-    </div>
+    </main>
 
     <div id="modal-container" class="modal">
         <span class="modal-close">&times;</span>
