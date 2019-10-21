@@ -1,3 +1,6 @@
+// "use strict";
+// jshint esversion: 8
+
 const imageGallery = document.querySelector('.image-gallery');
 const modalContainer = document.querySelector('#modal-container');
 const modalImg = document.querySelector('#modal-image');
@@ -5,16 +8,19 @@ const modalTitle = document.querySelector('#modal-title');
 const modalDescription = document.querySelector('#modal-description');
 const modalClose = document.querySelector('.modal-close');
 const themeIcon = document.querySelector('.header-theme-icon');
+const arrowIcon = document.querySelector('.top-arrow-icon');
 const loader = document.querySelector('#loader');
 const error = document.querySelector('#error');
 const animalSearch = document.querySelector('#animals');
-const citiesSearch = document.querySelector('#cities');
+const urbanSearch = document.querySelector('#urban');
 const mountainsSearch = document.querySelector('#mountains');
 const oceanSearch = document.querySelector('#ocean');
 const topArrow = document.querySelector('#top-arrow');
 
 const darkIcon = './src/assets/light-theme-icon.svg';
 const lightIcon = './src/assets/dark-theme-icon.svg';
+const darkArrowIcon = './src/assets/up-arrow-dark.svg';
+const lightArrowIcon = './src/assets/up-arrow-light.svg';
 
 let page_num = 1;
 let tag = 'blackandwhite';
@@ -36,7 +42,7 @@ const getImages = async (page_num, searchValue) => {
         privacy_filter: 1,
         nojsoncallback: 1,
         per_page: 24,
-        extras: 'description,owner_name',
+        extras: 'description,owner_name,views',
         safe_search: 1,
     };
 
@@ -51,6 +57,8 @@ const getImages = async (page_num, searchValue) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         let images = data.photos.photo;
+        console.log(images);
+
         handleImages(images);
     } catch (err) {
         error.classList.add('error-text');
@@ -73,6 +81,7 @@ const handleImages = images => {
             ownername: image.ownername,
             title: image.title,
             description: image.description._content,
+            views: image.views,
             imageUrl: `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`,
         });
     });
@@ -80,12 +89,13 @@ const handleImages = images => {
 };
 
 const createGalleryImage = imageData => {
-    const { id, ownername, imageUrl, title, description } = imageData;
+    const { id, ownername, imageUrl, title, description, views } = imageData;
 
     const galleryItem = createElement('div', 'image-gallery-item', null);
     const imgItem = createElement('img', 'img-item', null);
     const hoverItem = createElement('div', 'img-hover', null);
-    const hoverText = createElement('div', 'img-text', `@${ownername}`);
+    const hoverTitle = createElement('div', 'img-text', `@${ownername}`);
+    const hoverViews = createElement('p', 'img-views', `${views} views`);
 
     setAttributes(imgItem, {
         src: imageUrl,
@@ -93,7 +103,8 @@ const createGalleryImage = imageData => {
         alt: 'flickr-photo',
     });
 
-    hoverItem.append(hoverText);
+    hoverTitle.append(hoverViews);
+    hoverItem.append(hoverTitle);
     galleryItem.append(imgItem, hoverItem);
     imageGallery.append(galleryItem);
 
@@ -117,6 +128,7 @@ const setAttributes = (element, attributes) => {
 
 const addModalContent = (imgItem, title, description) => {
     imgItem.addEventListener('click', () => {
+        console.log('clicked');
         modalImg.src = imgItem.src;
         modalTitle.innerText = title;
         modalDescription.innerHTML = description;
@@ -130,9 +142,11 @@ const checkCurrentTheme = () => {
     if (currentTheme) {
         document.documentElement.setAttribute('theme', currentTheme);
         if (currentTheme === 'light') {
-            themeIcon.setAttribute('src', darkIcon);
+            themeIcon.src = darkIcon;
+            arrowIcon.src = darkArrowIcon;
         } else {
-            themeIcon.setAttribute('src', lightIcon);
+            themeIcon.src = lightIcon;
+            arrowIcon.src = lightArrowIcon;
         }
     }
 };
@@ -144,10 +158,12 @@ const changeTheme = () => {
         document.documentElement.setAttribute('theme', 'dark');
         localStorage.setItem('theme', 'dark');
         themeIcon.src = lightIcon;
+        arrowIcon.src = lightArrowIcon;
     } else {
         document.documentElement.setAttribute('theme', 'light');
         localStorage.setItem('theme', 'light');
         themeIcon.src = darkIcon;
+        arrowIcon.src = darkArrowIcon;
     }
 };
 
@@ -208,8 +224,8 @@ animalSearch.addEventListener('click', () => {
     searchNewTag(animalSearch.value);
 });
 
-citiesSearch.addEventListener('click', () => {
-    searchNewTag(citiesSearch.value);
+urbanSearch.addEventListener('click', () => {
+    searchNewTag(urbanSearch.value);
 });
 
 mountainsSearch.addEventListener('click', () => {

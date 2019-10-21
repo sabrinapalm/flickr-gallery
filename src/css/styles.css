@@ -3,6 +3,7 @@
     --main-text-color: #191919;
     --main-card-color: #fefefe;
     --main-border-color: #ccc;
+    --main-accent-color: #ffea00;
 }
 
 [theme="dark"] {
@@ -10,10 +11,12 @@
     --main-text-color: #fefefe;
     --main-card-color: #191919;
     --main-border-color: transparent;
+    --main-accent-color: #ffea00;
 }
 
 * {
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html,
@@ -23,7 +26,6 @@ img {
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: Arial, Helvetica, sans-serif;
     vertical-align: baseline;
 }
 
@@ -34,7 +36,7 @@ body {
 }
 
 #wrapper {
-    padding: 10px 10px 150px 10px;
+    padding: 10px 10px 100px 10px;
 }
 
 .header-container {
@@ -60,6 +62,7 @@ body {
 
 .header-tags {
     background-color: transparent;
+    font-size: 13px;
     color: var(--main-text-color);
     border: 2px solid var(--main-text-color);
     margin-right: 5px;
@@ -128,6 +131,13 @@ body {
   font-weight: bold;
 }
 
+.img-views {
+    color: var(--main-text-color);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 100;
+}
+
 
 .img-hover {
     transition: .5s ease;
@@ -137,6 +147,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    z-index: -1;
   }
   
 
@@ -255,6 +266,11 @@ body {
     filter: grayscale(100%);
 }
 
+.modal-content,
+#modal-caption img{
+    border:5px solid #FFF;
+}
+
 @keyframes zoom {
     from {
         transform: scale(0)
@@ -309,26 +325,26 @@ footer {
     position: fixed;
     bottom: 25px;
     right: 15px;
-    transition: background-color .3s, opacity .5s, visibility .5s;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
     cursor: pointer;
+    transition: opacity 1s;
   }
 
   #top-arrow img {
-      width: 35px;
-      z-index: 1000;
+      width: 20px;
+      height: 20px;
   }
 
   #top-arrow.show-arrow {
-    opacity: 0.8;
+    opacity: 1;
     visibility: visible;
+    background: var(--main-background-color);
+    padding: 10px;
+    border: 2px solid var(--main-text-color);
   }
 
-  #top-arrow.show-arrow:hover {
-    opacity: 1;
-  }
 
 @media only screen and (max-width: 700px) {
     .modal-content {
@@ -336,7 +352,7 @@ footer {
     }
 }
 
-@media only screen and (max-width: 534px) {
+@media only screen and (max-width: 519px) {
     .image-gallery-item {
         height: 100%;
     }
@@ -354,12 +370,6 @@ footer {
     }
     .header-tags {
         font-size: 12px;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    .header-tags {
-        font-size: 10px;
     }
     .header-theme-icon {
         top:17px
