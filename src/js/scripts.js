@@ -57,8 +57,6 @@ const getImages = async (page_num, searchValue) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         let images = data.photos.photo;
-        console.log(images);
-
         handleImages(images);
     } catch (err) {
         error.classList.add('error-text');
@@ -128,7 +126,6 @@ const setAttributes = (element, attributes) => {
 
 const addModalContent = (imgItem, title, description) => {
     imgItem.addEventListener('click', () => {
-        console.log('clicked');
         modalImg.src = imgItem.src;
         modalTitle.innerText = title;
         modalDescription.innerHTML = description;
