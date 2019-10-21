@@ -38,7 +38,7 @@ const getImages = async (page_num, searchValue) => {
         media: 'photos',
         privacy_filter: 1,
         nojsoncallback: 1,
-        per_page: 24,
+        per_page: 30,
         extras: 'description,owner_name,views',
         safe_search: 1,
     };
@@ -146,7 +146,7 @@ const searchNewTag = value => {
 };
 
 const pollMoreImages = () => {
-    let scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    let scrollable = document.documentElement.offsetHeight - window.innerHeight;
     let scrolled = window.scrollY;
 
     if (Math.ceil(scrolled) === scrollable) {

@@ -1,5 +1,5 @@
 const {
-    generateApiUrl,
+    createApiUrl,
     searchNewTag
 } = require('./utils');
 

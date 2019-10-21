@@ -91,7 +91,6 @@ body {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    animation: fadein 2s;
 }
 
 .image-gallery-item {
@@ -99,7 +98,7 @@ body {
     height: 250px;
     flex: auto;
     cursor: pointer;
-    animation: fadein 1s;
+    animation: fadein 1.5s;
     position: relative;
 }
 
