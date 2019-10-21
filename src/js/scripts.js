@@ -1,6 +1,3 @@
-// "use strict";
-// jshint esversion: 8
-
 const imageGallery = document.querySelector('.image-gallery');
 const modalContainer = document.querySelector('#modal-container');
 const modalImg = document.querySelector('#modal-image');
@@ -166,11 +163,8 @@ const pollMoreImages = () => {
     let scrolled = window.scrollY;
 
     if (Math.ceil(scrolled) === scrollable) {
-        topArrow.classList.add('show');
         page_num++;
         getImages(page_num, tag);
-    } else {
-        topArrow.classList.remove('show');
     }
 };
 
@@ -197,19 +191,13 @@ const hideLoader = () => {
 };
 
 window.addEventListener('scroll', () => {
+    pollMoreImages();
     goToTop();
 });
 
 window.addEventListener('load', () => {
-    getImages(page_num, tag);
-});
-
-window.addEventListener('load', () => {
     checkCurrentTheme();
-});
-
-window.addEventListener('scroll', () => {
-    pollMoreImages();
+    getImages(page_num, tag);
 });
 
 themeIcon.addEventListener('click', () => {
