@@ -1,6 +1,3 @@
-// "use strict";
-// jshint esversion: 8
-
 const imageGallery = document.querySelector('.image-gallery');
 const modalContainer = document.querySelector('#modal-container');
 const modalImg = document.querySelector('#modal-image');
@@ -46,7 +43,7 @@ const getImages = async (page_num, searchValue) => {
         safe_search: 1,
     };
 
-    let apiUrl = generateApiUrl(settings, page_num);
+    let apiUrl = createApiUrl(settings, page_num);
 
     if (!apiUrl) {
         hideLoader();
@@ -64,7 +61,7 @@ const getImages = async (page_num, searchValue) => {
     }
 };
 
-const generateApiUrl = (settings, page_num) => {
+const createApiUrl = (settings, page_num) => {
     return `${settings.baseUrl}api_key=${settings.api_key}&format=${settings.format}&method=${settings.method}&tags=${settings.tags}&media=${settings.media}&privacy_filter=${settings.privacy_filter}&nojsoncallback=${settings.nojsoncallback}&per_page=${settings.per_page}&extras=${settings.extras}&page=${page_num}`;
 };
 
@@ -87,7 +84,14 @@ const handleImages = images => {
 };
 
 const createGalleryImage = imageData => {
-    const { id, ownername, imageUrl, title, description, views } = imageData;
+    const {
+        id,
+        ownername,
+        imageUrl,
+        title,
+        description,
+        views
+    } = imageData;
 
     const galleryItem = createElement('div', 'image-gallery-item', null);
     const imgItem = createElement('img', 'img-item', null);
@@ -133,6 +137,33 @@ const addModalContent = (imgItem, title, description) => {
     });
 };
 
+
+const searchNewTag = value => {
+    imageGallery.innerHTML = '';
+    page_num = 1;
+    tag = value;
+    getImages(page_num, tag);
+};
+
+const pollMoreImages = () => {
+    let scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    let scrolled = window.scrollY;
+
+    if (Math.ceil(scrolled) === scrollable) {
+        page_num++;
+        getImages(page_num, tag);
+    }
+};
+
+const goToTop = () => {
+    let scrolled = window.scrollY;
+    if (scrolled > 300) {
+        topArrow.classList.add('show-arrow');
+    } else {
+        topArrow.classList.remove('show-arrow');
+    }
+};
+
 const checkCurrentTheme = () => {
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
@@ -164,35 +195,13 @@ const changeTheme = () => {
     }
 };
 
-const searchNewTag = value => {
-    imageGallery.innerHTML = '';
-    page_num = 1;
-    tag = value;
-    getImages(page_num, tag);
-};
-
-const pollMoreImages = () => {
-    let scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    let scrolled = window.scrollY;
-
-    if (Math.ceil(scrolled) === scrollable) {
-        page_num++;
-        getImages(page_num, tag);
-    }
-};
-
-const goToTop = () => {
-    let scrolled = window.scrollY;
-    if (scrolled > 300) {
-        topArrow.classList.add('show-arrow');
-    } else {
-        topArrow.classList.remove('show-arrow');
-    }
-};
 
 topArrow.addEventListener('click', e => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 
 const showLoader = () => {

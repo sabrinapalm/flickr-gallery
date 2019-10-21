@@ -3,7 +3,6 @@
     --main-text-color: #191919;
     --main-card-color: #fefefe;
     --main-border-color: #ccc;
-    --main-accent-color: #ffea00;
 }
 
 [theme="dark"] {
@@ -11,7 +10,6 @@
     --main-text-color: #fefefe;
     --main-card-color: #191919;
     --main-border-color: transparent;
-    --main-accent-color: #ffea00;
 }
 
 * {
@@ -112,7 +110,7 @@ body {
 .image-gallery-item:hover .img-hover {
     opacity: 1;
 }
-  
+
 
 .image-gallery-item .img-item {
     width: 100%;
@@ -126,9 +124,9 @@ body {
 }
 
 .img-text {
-  color: var(--main-text-color);
-  font-size: 16px;
-  font-weight: bold;
+    color: var(--main-text-color);
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .img-views {
@@ -148,13 +146,14 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: -1;
-  }
-  
+}
+
 
 @keyframes fadein {
     from {
         opacity: 0
     }
+
     to {
         opacity: 1
     }
@@ -206,6 +205,7 @@ body {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -215,6 +215,7 @@ body {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -267,14 +268,15 @@ body {
 }
 
 .modal-content,
-#modal-caption img{
-    border:5px solid #FFF;
+#modal-caption img {
+    border: 5px solid #FFF;
 }
 
 @keyframes zoom {
     from {
         transform: scale(0)
     }
+
     to {
         transform: scale(1)
     }
@@ -330,20 +332,20 @@ footer {
     z-index: 1000;
     cursor: pointer;
     transition: opacity 1s;
-  }
+}
 
-  #top-arrow img {
-      width: 20px;
-      height: 20px;
-  }
+#top-arrow img {
+    width: 20px;
+    height: 20px;
+}
 
-  #top-arrow.show-arrow {
+#top-arrow.show-arrow {
     opacity: 1;
     visibility: visible;
     background: var(--main-background-color);
     padding: 10px;
     border: 2px solid var(--main-text-color);
-  }
+}
 
 
 @media only screen and (max-width: 700px) {
@@ -356,9 +358,11 @@ footer {
     .image-gallery-item {
         height: 100%;
     }
+
     .image-gallery-item .img-item {
         height: 100%;
     }
+
     .header-tags {
         font-size: 12px;
     }
@@ -368,10 +372,12 @@ footer {
     .header-title {
         font-size: 25px;
     }
+
     .header-tags {
         font-size: 12px;
     }
+
     .header-theme-icon {
-        top:17px
+        top: 17px
     }
 }

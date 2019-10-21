@@ -1,4 +1,4 @@
-exports.generateApiUrl = (settings, page_num) => {
+exports.createApiUrl = (settings, page_num) => {
     if (settings === undefined || settings === null) {
         throw new Error('Not an object!');
     }
