@@ -12,36 +12,33 @@
 <body>
     <header class="header-container">
         <img class="header-theme-icon" src="src/assets/dark-theme-icon.svg" alt="icon" />
-        <h1 class="header-title">BLACK<span style="font-weight: 100;">/WHITE</span></h1>
+        <h1 class="header-title">flickr.</h1>
         <div class="header-tags-container">
-            <button id="animals" class="header-tags" value="animals">#animals</button>
-            <button id="urban" class="header-tags" value="urban">#urban</button>
-            <button id="mountains" class="header-tags" value="mountains">#mountains</button>
-            <button id="ocean" class="header-tags" value="ocean">#ocean</button>
+            <button class="header-tags" value="animals">Animals</button>
+            <button class="header-tags" value="mountains">Mountains</button>
+            <button class="header-tags" value="ocean">Ocean</button>
+            <button class="header-tags" value="urban">Urban</button>
         </div>
     </header>
 
-    <main id="wrapper">
+    <main class="wrapper">
         <div class="image-gallery"></div>
-        <div id="loader"></div>
-        <div id="error">Oops. Something went wrong..</div>
+        <div class="loader"></div>
+        <div class="error">Oops. Something went wrong..</div>
     </main>
 
-    <div id="modal-container" class="modal">
+    <div class="modal-container modal">
         <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-image">
-        <div id="modal-caption">
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
+        <img class="modal-image modal-content">
+        <div class="modal-caption">
+            <h2 class="modal-title"></h2>
+            <p class="modal-description"></p>
         </div>
     </div>
-    <a id="top-arrow">
+    <a class="top-arrow">
         <img class="top-arrow-icon" src="./src/assets/up-arrow-light.svg" alt="top-arrow">
     </a>
-    <footer>
-        <p>A black & white <strong>flickr</strong> story</p>
-    </footer>
-    <script src="src/js/scripts.js"></script>
+    <script src="src/js/main.js"></script>
 </body>
 
 </html>

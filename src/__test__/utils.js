@@ -2,7 +2,6 @@ exports.createApiUrl = (settings, page_num) => {
     if (settings === undefined || settings === null) {
         throw new Error('Not an object!');
     }
-
     if (isNaN(page_num)) {
         throw new Error('Not a number');
     }
